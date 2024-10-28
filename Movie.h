@@ -14,4 +14,4 @@ class Movie: public Media {
   char* director;
   int duration;
   int rating;
-}
+};

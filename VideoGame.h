@@ -12,5 +12,5 @@ class VideoGame: public Media {
  private:
   char* publisher;
   int rating;
-}
+};
   

@@ -8,11 +8,11 @@ Music::Music() : public Media() {
   rating = 0;
 }
 
-Music::Music(char* newTitle, char* newArtist, int newYear, int newDuration, int newRating) : public Media(newTitle, newYear) {
+Music::Music(char* newTitle, char* newArtist, int newYear, int newDuration, char* newPublisher) : public Media(newTitle, newYear) {
   artist = new char[80];
   strcpy(artist, newArtist);
   duration = newDuration;
-  rating = newRating;
+  publisher = newPublisher;
 }
 
 char* Music::getArtist () {
@@ -23,8 +23,8 @@ int Music::getDuration () {
   return duration;
 }
 
-int Music::getRating () {
-  return rating;
+int Music::getPublisher () {
+  return publisher;
 }
 
 

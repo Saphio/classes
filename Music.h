@@ -9,8 +9,9 @@ class Music: public Media {
   Music(char*, char*, int, int, char*);
   char* getDirector();
   int getDuration();
-  int getRating();
+  int getPublisher();
  private:
   char* artist;
   int duration;
   char* publisher;
+};

@@ -12,4 +12,4 @@ class Media {
  protected:
   char* title;
   int year;
-}
+};
