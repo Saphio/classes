@@ -1,7 +1,7 @@
 #include <cstring>
 #include <iostream>
 
-using namespce std;
+using namespace std;
 
 class VideoGame: public Media {
  public:
