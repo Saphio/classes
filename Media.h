@@ -1,3 +1,6 @@
+#ifndef MEDIA_H
+#define MEDIA_H
+
 #include <iostream>
 #include <cstring>
 
@@ -7,9 +10,11 @@ class Media {
  public:
   Media ();
   Media (char*, int);
-  char* getTitle;
-  int getYear;
+  char* getTitle();
+  int getYear();
  protected:
   char* title;
   int year;
 };
+
+#endif

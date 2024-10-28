@@ -1,9 +1,15 @@
+#ifndef VIDEOGAME_H
+#define VIDEOGAME_H
+
 #include <cstring>
 #include <iostream>
+#include "Media.h"
+
+#endif
 
 using namespace std;
 
-class VideoGame: public Media {
+class VideoGame : public Media {
  public:
   VideoGame();
   VideoGame(char*, int, char*, int);
@@ -13,4 +19,4 @@ class VideoGame: public Media {
   char* publisher;
   int rating;
 };
-  
+ 

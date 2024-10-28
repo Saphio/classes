@@ -2,13 +2,13 @@
 #include <cstring>
 #include "Movie.h"
 
-Movie::Movie() : public Media () {
+Movie::Movie() : Media () {
   director = new char[80];
   duration = 0;
   rating = 0;
 }
 
-Movie::Movie (char* newTitle, char* newDirector, int newYear, int newDuration, int newRating) : public Media(newTitle, newYear) {
+Movie::Movie (char* newTitle, char* newDirector, int newYear, int newDuration, int newRating) : Media(newTitle, newYear) {
   title = new char[80];
   strcpy(title, newTitle);
   duration = newDuration;

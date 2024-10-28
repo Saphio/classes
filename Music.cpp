@@ -2,17 +2,18 @@
 #include <cstring>
 #include "Music.h"
 
-Music::Music() : public Media() {
+Music::Music() : Media() {
   artist = new char[80];
   duration = 0;
-  rating = 0;
+  publisher = new char[80];
 }
 
-Music::Music(char* newTitle, char* newArtist, int newYear, int newDuration, char* newPublisher) : public Media(newTitle, newYear) {
+Music::Music(char* newTitle, char* newArtist, int newYear, int newDuration, char* newPublisher) : Media(newTitle, newYear) {
   artist = new char[80];
   strcpy(artist, newArtist);
   duration = newDuration;
-  publisher = newPublisher;
+  publisher = new char[80];
+  strcpy(publisher, newPublisher);
 }
 
 char* Music::getArtist () {
@@ -23,7 +24,7 @@ int Music::getDuration () {
   return duration;
 }
 
-int Music::getPublisher () {
+char* Music::getPublisher () {
   return publisher;
 }
 
