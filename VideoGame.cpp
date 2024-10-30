@@ -7,7 +7,7 @@ VideoGame::VideoGame() : Media () {
   rating = 0;
 }
 
-VideoGame::VideoGame(char* newTitle, int newYear, char* newPublisher, int newRating) : Media(title, year) {
+VideoGame::VideoGame(char* newTitle, int newYear, char* newPublisher, int newRating) : Media(newTitle, newYear) {
   publisher = new char[80];
   strcpy(publisher, newPublisher);
   rating = newRating;
@@ -19,4 +19,11 @@ char* VideoGame::getPublisher () {
 
 int VideoGame::getRating () {
   return rating;
+}
+
+void VideoGame::display() {
+  cout << "Video Game: " << getTitle();
+  cout << " -- Publisher: " << getPublisher();
+  cout << " -- Rating: " << getRating();
+  cout << " -- Year: " << getYear() << endl;
 }

@@ -16,6 +16,7 @@ class Music: public Media {
   virtual char* getArtist();
   virtual int getDuration();
   virtual char* getPublisher();
+  virtual void display();
  private:
   char* artist;
   int duration;

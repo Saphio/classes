@@ -39,3 +39,7 @@ char* Media::getArtist() {
 char* Media::getPublisher() {
   return new char[1];
 }
+
+void Media::display() {
+  cout << "" << endl;
+}

@@ -10,7 +10,7 @@ using namespace std;
 // function prototypes
 int checkInput(char cmd[80]);
 void addMedia(vector<Media*> &media);
-void search(vector<Media*> media);
+void search(vector<Media*> &media);
 void destroy(vector<Media*> &media);
 
 // main functions
@@ -28,8 +28,8 @@ int main () {
       addMedia(media);
     }
     else if (cmd == 1) {
-      //       search();
       cout << "Search for media!" << endl;
+      search(media);
     }
     else if (cmd == 2) {
       //       destroy();
@@ -69,6 +69,11 @@ void addMedia (vector<Media*> &media) {
   int year;
   int duration;
   int rating;
+
+  cout << "What type of media are you adding? (Music/Videogame/Movie)" << endl;
+  char input[80];
+  cin.get(input, 80);
+  cin.get();
   
   cout << "What's the title of your media?" << endl;
   cin.get(title, 80);
@@ -78,10 +83,6 @@ void addMedia (vector<Media*> &media) {
   cin >> year;
   cin.get();
 
-  cout << "What type of media are you adding? (Music/Videogame/Movie)" << endl;
-  char input[80];
-  cin.get(input, 80);
-  cin.get();
   
   if (strcmp(input, "Music") == 0) {
     cout << "Who is the artist?" << endl;
@@ -122,6 +123,42 @@ void addMedia (vector<Media*> &media) {
     media.push_back(movie);
   }
   
+  else {
+    cout << "Don't know what that is." << endl;
+  }
+  return;
+}
+
+// search for media
+void search (vector<Media*> &media) {
+  char input[80];
+  int year;
+  char title[80];
+  cout << "Search for title or year? (t/y)" << endl;
+  cin.get(input, 80);
+  cin.get();
+  if (strcmp(input, "t") == 0) {
+    cout << "Enter the title:" << endl;
+    cin.get(title, 80);
+    cin.get();
+    for (vector <Media*>::iterator it = media.begin();
+	 it != media.end(); it ++) {
+      if (strcmp((*it)->getTitle(), title) == 0) {
+	(*it)->display();
+      }
+    }
+  }
+  else if (strcmp(input, "y") == 0) {
+    cout << "Enter the year:" << endl;
+    cin >> year;
+    cin.get();
+    for (vector <Media*>::iterator it = media.begin();
+	 it != media.end(); it++) {
+      if (year == (*it)->getYear()) {
+	(*it)->display();
+      }
+    }
+  }
   else {
     cout << "Don't know what that is." << endl;
   }

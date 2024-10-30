@@ -13,6 +13,8 @@ Movie::Movie (char* newTitle, char* newDirector, int newYear, int newDuration, i
   strcpy(title, newTitle);
   duration = newDuration;
   rating = newRating;
+  director = new char[80];
+  strcpy(director, newDirector);
 }
 
 char* Movie::getDirector() {
@@ -25,4 +27,12 @@ int Movie::getDuration () {
 
 int Movie::getRating () {
   return rating;
+}
+
+void Movie::display() {
+  cout << "Movie: " << getTitle();
+  cout << " -- Director: " << getDirector();
+  cout << " -- Duration: " << getDuration();
+  cout << " -- Rating: " << getRating();
+  cout << " -- Year: " << getYear() << endl;
 }

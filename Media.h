@@ -17,6 +17,7 @@ class Media {
   virtual int getRating();
   virtual char* getArtist();
   virtual char* getPublisher();
+  virtual void display();
  protected:
   char* title;
   int year;

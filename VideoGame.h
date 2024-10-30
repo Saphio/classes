@@ -15,6 +15,7 @@ class VideoGame : public Media {
   VideoGame(char*, int, char*, int);
   virtual char* getPublisher();
   virtual int getRating();
+  virtual void display();
  private:
   char* publisher;
   int rating;
