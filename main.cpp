@@ -10,7 +10,7 @@ using namespace std;
 // function prototypes
 int checkInput(char cmd[80]);
 void addMedia(vector<Media*> &media);
-void search(vecpublictor<Media*> media);
+void search(vector<Media*> media);
 void destroy(vector<Media*> &media);
 
 // main functions
@@ -61,11 +61,11 @@ int checkInput(char cmd[80]) {
     return -1;
 }
   
-void addMedia (vector<Media*> media) {
-  char* title;
-  char* director;
-  char* publisher;
-  char* artist;
+void addMedia (vector<Media*> &media) {
+  char* title = new char[80];
+  char* publisher = new char[80];
+  char* artist = new char[80];
+  char* director = new char[80];
   int year;
   int duration;
   int rating;
@@ -76,6 +76,7 @@ void addMedia (vector<Media*> media) {
 
   cout << "What year was the media created?" << endl;
   cin >> year;
+  cin.get();
 
   cout << "What type of media are you adding? (Music/Videogame/Movie)" << endl;
   char input[80];
@@ -83,26 +84,42 @@ void addMedia (vector<Media*> media) {
   cin.get();
   
   if (strcmp(input, "Music") == 0) {
-    cout << "Who directed the music?" << endl;
-    cin.get(director, 80);
+    cout << "Who is the artist?" << endl;
+    cin.get(artist, 80);
     cin.get();
     cout << "How long is the song?" << endl;
     cin >> duration;
+    cin.get();
     cout << "Who published the song?" << endl;
     cin.get(publisher, 80);
     cin.get();
     Media* song = new Music(title, artist, year, duration, publisher);
     media.push_back(song);
-
-    cout << media.front()->getTitle() << endl;
   }
   
   else if (strcmp(input, "Videogame") == 0) {
-
+    cout << "Who published the video game?" << endl;
+    cin.get(publisher, 80);
+    cin.get();
+    cout << "What's the game's rating?" << endl;
+    cin >> rating;
+    cin.get();
+    Media* game = new VideoGame(title, year, publisher, rating);
+    media.push_back(game);
   }
   
   else if (strcmp(input, "Movie") == 0) {
-
+    cout << "Who directed the movie?" << endl;
+    cin.get(director, 80);
+    cin.get();
+    cout << "How long is the movie?" << endl;
+    cin >> duration;
+    cin.get();
+    cout << "What is the movie's rating?" << endl;
+    cin >> rating;
+    cin.get();
+    Media* movie = new Movie(title, director, year, duration, rating);
+    media.push_back(movie);
   }
   
   else {

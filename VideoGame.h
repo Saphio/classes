@@ -13,8 +13,8 @@ class VideoGame : public Media {
  public:
   VideoGame();
   VideoGame(char*, int, char*, int);
-  char* getPublisher();
-  int getRating();
+  virtual char* getPublisher();
+  virtual int getRating();
  private:
   char* publisher;
   int rating;

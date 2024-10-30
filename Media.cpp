@@ -21,4 +21,21 @@ int Media::getYear() {
   return year;
 }
 
+char* Media::getDirector() {
+  return new char[1];
+}
 
+int Media::getDuration() {
+  return 0;
+}
+int Media::getRating() {
+  return 0;
+}
+
+char* Media::getArtist() {
+  return new char[1];
+}
+
+char* Media::getPublisher() {
+  return new char[1];
+}

@@ -12,6 +12,11 @@ class Media {
   Media (char*, int);
   char* getTitle();
   int getYear();
+  virtual char* getDirector();
+  virtual int getDuration();
+  virtual int getRating();
+  virtual char* getArtist();
+  virtual char* getPublisher();
  protected:
   char* title;
   int year;
