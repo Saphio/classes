@@ -12,6 +12,7 @@ int checkInput(char cmd[80]);
 void addMedia(vector<Media*> &media);
 vector<Media*> search(vector<Media*> &media);
 void destroy(vector<Media*> &media);
+void printAll(vector<Media*> &media);
 
 // main functions
 int main () {
@@ -39,6 +40,9 @@ int main () {
       cout << "See ya." << endl;
       running = false;
     }
+    else if (cmd == 4) {
+      printAll(media);
+    }
     else {
       cout << "Invalid command." << endl;
     }
@@ -57,6 +61,8 @@ int checkInput(char cmd[80]) {
     return 2;
   else if (strcmp(cmd, "QUIT") == 0)
     return 3;
+  else if (strcmp(cmd, "PRINT") == 0)
+    return 4;
   else
     return -1;
 }
@@ -94,7 +100,7 @@ void addMedia (vector<Media*> &media) {
     cout << "Who published the song?" << endl;
     cin.get(publisher, 80);
     cin.get();
-    Media* song = new Music(title, artist, year, duration, publisher);
+    Media* song = new Music(title, artist, year, duration, publisher, true);
     media.push_back(song);
   }
   
@@ -105,7 +111,7 @@ void addMedia (vector<Media*> &media) {
     cout << "What's the game's rating?" << endl;
     cin >> rating;
     cin.get();
-    Media* game = new VideoGame(title, year, publisher, rating);
+    Media* game = new VideoGame(title, year, publisher, rating, true);
     media.push_back(game);
   }
   
@@ -119,7 +125,7 @@ void addMedia (vector<Media*> &media) {
     cout << "What is the movie's rating?" << endl;
     cin >> rating;
     cin.get();
-    Media* movie = new Movie(title, director, year, duration, rating);
+    Media* movie = new Movie(title, director, year, duration, rating, true);
     media.push_back(movie);
   }
   
@@ -173,7 +179,10 @@ vector<Media*> search (vector<Media*> &media) {
 void destroy(vector<Media*> &media) {
   cout << "What do you want to delete?" << endl;
   vector<Media*> results = search(media);
+  vector<int> toDelete;
   char input[80];
+
+  
   for (vector <Media*>::iterator it = results.begin();
        it != results.end(); it++) {
     cout << "\nDelete this media? (y/n)" << endl;
@@ -181,9 +190,31 @@ void destroy(vector<Media*> &media) {
     cin.get(input, 80);
     cin.get();
     if (strcmp(input, "y") == 0) {
-      (*it)->~Media();
+      (*it)->setStatus(false);
     }
-  }  
+  }
+  
+  for (vector <Media*>::iterator it = media.begin();
+       it != media.end();) {
+    cout << endl;
+    (*it)->display();
+    cout << (*it)->getStatus() << endl;
+    if ((*it)->getStatus() == false) {
+      (*it)->~Media();
+      it = media.erase(it);
+    }
+    else {
+      ++it;
+    }
+  }
+
   cout << "Done." << endl;
   return;
+}
+
+void printAll(vector<Media*> &media) {
+  for (vector<Media*>::iterator it = media.begin();
+       it != media.end(); it++) {
+    (*it)->display();
+  }
 }

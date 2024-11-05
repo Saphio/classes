@@ -8,7 +8,7 @@ Music::Music() : Media() {
   publisher = new char[80];
 }
 
-Music::Music(char* newTitle, char* newArtist, int newYear, int newDuration, char* newPublisher) : Media(newTitle, newYear) {
+Music::Music(char* newTitle, char* newArtist, int newYear, int newDuration, char* newPublisher, bool newStatus) : Media(newTitle, newYear, newStatus) {
   artist = new char[80];
   strcpy(artist, newArtist);
   duration = newDuration;

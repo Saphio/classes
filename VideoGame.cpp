@@ -7,7 +7,7 @@ VideoGame::VideoGame() : Media () {
   rating = 0;
 }
 
-VideoGame::VideoGame(char* newTitle, int newYear, char* newPublisher, int newRating) : Media(newTitle, newYear) {
+VideoGame::VideoGame(char* newTitle, int newYear, char* newPublisher, int newRating, bool newStatus) : Media(newTitle, newYear, newStatus) {
   publisher = new char[80];
   strcpy(publisher, newPublisher);
   rating = newRating;

@@ -7,7 +7,7 @@ using namespace std;
 class VideoGame : public Media {
  public:
   VideoGame();
-  VideoGame(char*, int, char*, int);
+  VideoGame(char*, int, char*, int, bool);
   virtual ~VideoGame();
   virtual char* getPublisher();
   virtual int getRating();

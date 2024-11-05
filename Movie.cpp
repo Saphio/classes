@@ -8,7 +8,7 @@ Movie::Movie() : Media () {
   rating = 0;
 }
 
-Movie::Movie (char* newTitle, char* newDirector, int newYear, int newDuration, int newRating) : Media(newTitle, newYear) {
+Movie::Movie (char* newTitle, char* newDirector, int newYear, int newDuration, int newRating, bool newStatus) : Media(newTitle, newYear, newStatus) {
   title = new char[80];
   strcpy(title, newTitle);
   duration = newDuration;

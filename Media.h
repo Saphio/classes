@@ -9,7 +9,7 @@ using namespace std;
 class Media {
  public:
   Media ();
-  Media (char*, int);
+  Media (char*, int, bool);
   virtual ~Media ();
   char* getTitle();
   int getYear();
@@ -19,9 +19,12 @@ class Media {
   virtual char* getArtist();
   virtual char* getPublisher();
   virtual void display();
+  virtual bool getStatus();
+  virtual void setStatus(bool);
  protected:
   char* title;
   int year;
+  bool status;
 };
 
 #endif

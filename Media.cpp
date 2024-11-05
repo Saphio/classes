@@ -7,10 +7,11 @@ Media::Media() {
   year = 0;
 }
 
-Media::Media(char* newTitle, int newYear) {
+Media::Media(char* newTitle, int newYear, bool newStatus) {
   title = new char[80];
   strcpy(title, newTitle);
   year = newYear;
+  status = newStatus;
 }
 
 Media::~Media() {
@@ -46,4 +47,12 @@ char* Media::getPublisher() {
 
 void Media::display() {
   cout << "" << endl;
+}
+
+bool Media::getStatus() {
+  return status;
+}
+
+void Media::setStatus(bool state) {
+  status = state;
 }
