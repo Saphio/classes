@@ -10,6 +10,7 @@ class Media {
  public:
   Media ();
   Media (char*, int);
+  virtual ~Media ();
   char* getTitle();
   int getYear();
   virtual char* getDirector();

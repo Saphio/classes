@@ -17,6 +17,10 @@ Movie::Movie (char* newTitle, char* newDirector, int newYear, int newDuration, i
   strcpy(director, newDirector);
 }
 
+Movie::~Movie() {
+  delete director;
+}
+
 char* Movie::getDirector() {
   return director;
 }

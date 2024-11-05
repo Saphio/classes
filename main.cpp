@@ -10,7 +10,7 @@ using namespace std;
 // function prototypes
 int checkInput(char cmd[80]);
 void addMedia(vector<Media*> &media);
-void search(vector<Media*> &media);
+vector<Media*> search(vector<Media*> &media);
 void destroy(vector<Media*> &media);
 
 // main functions
@@ -19,7 +19,7 @@ int main () {
   char command[80];
   bool running = true;
   while (running) {
-    cout << "Enter valid command:" << endl;
+    cout << "\nEnter valid command:" << endl;
     cin.get(command, 80);
     cin.get();
     int cmd = checkInput(command);
@@ -32,8 +32,8 @@ int main () {
       search(media);
     }
     else if (cmd == 2) {
-      //       destroy();
       cout << "Delete media!" << endl;
+      destroy(media);
     }
     else if (cmd == 3) {
       cout << "See ya." << endl;
@@ -130,7 +130,8 @@ void addMedia (vector<Media*> &media) {
 }
 
 // search for media
-void search (vector<Media*> &media) {
+vector<Media*> search (vector<Media*> &media) {
+  vector<Media*> results;
   char input[80];
   int year;
   char title[80];
@@ -141,10 +142,12 @@ void search (vector<Media*> &media) {
     cout << "Enter the title:" << endl;
     cin.get(title, 80);
     cin.get();
+    cout << "Search results:" << endl;
     for (vector <Media*>::iterator it = media.begin();
 	 it != media.end(); it ++) {
       if (strcmp((*it)->getTitle(), title) == 0) {
 	(*it)->display();
+	results.push_back(*it);
       }
     }
   }
@@ -152,15 +155,35 @@ void search (vector<Media*> &media) {
     cout << "Enter the year:" << endl;
     cin >> year;
     cin.get();
+    cout << "Search results:" << endl;
     for (vector <Media*>::iterator it = media.begin();
 	 it != media.end(); it++) {
       if (year == (*it)->getYear()) {
 	(*it)->display();
+	results.push_back(*it);
       }
     }
   }
   else {
     cout << "Don't know what that is." << endl;
   }
+  return results;
+}
+
+void destroy(vector<Media*> &media) {
+  cout << "What do you want to delete?" << endl;
+  vector<Media*> results = search(media);
+  char input[80];
+  for (vector <Media*>::iterator it = results.begin();
+       it != results.end(); it++) {
+    cout << "\nDelete this media? (y/n)" << endl;
+    (*it)->display();
+    cin.get(input, 80);
+    cin.get();
+    if (strcmp(input, "y") == 0) {
+      (*it)->~Media();
+    }
+  }  
+  cout << "Done." << endl;
   return;
 }
